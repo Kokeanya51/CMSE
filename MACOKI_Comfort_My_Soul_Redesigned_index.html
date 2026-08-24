@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b7a75">
+<meta name="description" content="MACOKI Digital Ecosystem — healthcare, education, inventory, nursery and women's health.">
+<title>MACOKI Digital Ecosystem | Comfort My Soul Clinic</title>
+
+<style>
+:root{
+  --primary:#0b7a75;
+  --primary-2:#0e948c;
+  --primary-dark:#07524f;
+  --accent:#e8b84a;
+  --danger:#c62828;
+  --warning:#c57a00;
+  --success:#198754;
+  --bg:#f4f8f8;
+  --surface:#ffffff;
+  --surface-2:#eef6f5;
+  --text:#15302f;
+  --muted:#617372;
+  --border:#dce9e7;
+  --shadow:0 16px 45px rgba(20,62,60,.10);
+  --shadow-sm:0 8px 24px rgba(20,62,60,.08);
+  --radius:22px;
+  --radius-sm:14px;
+  --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{width:min(var(--max),92%);margin:auto}
+.topbar{
+  background:var(--primary-dark);color:#fff;font-size:.85rem;
+  padding:8px 0;
+}
+.topbar .container{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.nav{
+  position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--border);
+}
+.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900}
+.logo{
+  width:45px;height:45px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:white;display:grid;place-items:center;font-size:1.35rem;box-shadow:var(--shadow-sm)
+}
+.brand small{display:block;color:var(--muted);font-weight:600;font-size:.68rem}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a,.nav-links button{
+  border:0;background:transparent;padding:10px 12px;border-radius:10px;color:var(--text);
+  font-weight:700;font-size:.9rem
+}
+.nav-links a:hover,.nav-links button:hover{background:var(--surface-2);color:var(--primary)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{
+  width:42px;height:42px;border:1px solid var(--border);background:var(--surface);
+  border-radius:12px;display:grid;place-items:center
+}
+.menu-btn{display:none}
+.hero{
+  position:relative;overflow:hidden;padding:82px 0 72px;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(14,148,140,.22),transparent 28%),
+    radial-gradient(circle at 10% 80%,rgba(232,184,74,.16),transparent 25%),
+    linear-gradient(135deg,#e9f7f5 0%,#fff 55%,#f8fbfb 100%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;background:#dff2ef;color:var(--primary-dark);
+  border:1px solid #c8e8e4;border-radius:999px;padding:7px 12px;font-size:.8rem;font-weight:800;
+}
+.hero h1{font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.02;letter-spacing:-.055em;margin:18px 0}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.08rem;color:var(--muted);max-width:700px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0}
+.btn{
+  border:0;border-radius:13px;padding:12px 17px;font-weight:800;transition:.2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 9px 22px rgba(11,122,117,.22)}
+.btn-secondary{background:#fff;border:1px solid var(--border);color:var(--text)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-gold{background:var(--accent);color:#25301f}
+.hero-card{
+  background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);
+  border-radius:30px;padding:28px;box-shadow:var(--shadow);backdrop-filter:blur(15px)
+}
+.hero-orb{height:300px;border-radius:26px;background:linear-gradient(145deg,var(--primary-dark),var(--primary-2));color:white;padding:30px;position:relative;overflow:hidden}
+.hero-orb:after{
+  content:"";position:absolute;width:210px;height:210px;border:35px solid rgba(255,255,255,.12);
+  border-radius:50%;right:-50px;top:-40px
+}
+.hero-orb .cross{font-size:5rem;line-height:1;font-weight:200}
+.status-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+.status{background:rgba(255,255,255,.12);padding:13px;border-radius:14px}
+.status strong{display:block;font-size:1.2rem}.status span{font-size:.78rem;opacity:.8}
+.section{padding:78px 0}
+.section-head{display:flex;justify-content:space-between;gap:25px;align-items:end;margin-bottom:28px}
+.section-head h2{font-size:clamp(1.8rem,3vw,2.7rem);line-height:1.1}
+.section-head p{max-width:680px;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:25px
+}
+.card h3{margin-bottom:8px}.muted{color:var(--muted)}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.value{padding:20px;border-radius:17px;background:var(--surface-2);border:1px solid var(--border)}
+.value b{display:block;margin:7px 0 4px}
+.departments{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.dept{position:relative;overflow:hidden;transition:.25s}
+.dept:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.dept-icon{
+  width:55px;height:55px;border-radius:17px;background:#e2f3f1;display:grid;place-items:center;
+  font-size:1.6rem;margin-bottom:18px
+}
+.dept p{color:var(--muted);font-size:.92rem}
+.dept ul{list-style:none;margin:15px 0}.dept li{font-size:.86rem;margin:5px 0;color:#45605f}
+.dept li:before{content:"✓";color:var(--success);font-weight:900;margin-right:7px}
+.portal{display:none;padding:78px 0;min-height:70vh}
+.portal.active{display:block}
+.portal-head{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:25px
+}
+.portal-title{display:flex;gap:15px;align-items:center}.portal-title .dept-icon{margin:0}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field.full{grid-column:1/-1}
+label{font-size:.84rem;font-weight:800;color:#304b49}
+input,select,textarea{
+  width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:12px;
+  background:#fff;color:var(--text);outline:none
+}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(11,122,117,.12)}
+textarea{min-height:110px;resize:vertical}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{padding:18px;border:1px solid var(--border);background:var(--surface);border-radius:18px}
+.kpi .num{font-size:1.8rem;font-weight:900}.kpi small{color:var(--muted)}
+.notice{padding:13px 15px;border-radius:13px;background:#fff7df;border:1px solid #f0d98c;color:#674d00;margin:14px 0;font-size:.88rem}
+.alert{padding:15px;border-radius:15px;background:#fff0f0;border:1px solid #f2c5c5;color:#7a2020}
+.search{display:flex;gap:10px;margin-bottom:16px}.search input{flex:1}
+.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:16px}
+table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}
+th,td{text-align:left;padding:13px;border-bottom:1px solid var(--border);font-size:.86rem}
+th{background:var(--surface-2);font-weight:900}
+.badge{display:inline-flex;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800}
+.badge.green{background:#e3f5e9;color:#16723f}.badge.orange{background:#fff0d7;color:#925800}.badge.red{background:#ffe5e5;color:#a52121}
+.course-list,.faq-list{display:grid;gap:10px}
+.course{padding:15px;border:1px solid var(--border);border-radius:14px;background:#fff}
+.course b{display:block}.course span{font-size:.82rem;color:var(--muted)}
+.alphabet{display:grid;grid-template-columns:repeat(7,1fr);gap:9px}
+.letter{
+  aspect-ratio:1;border:1px solid var(--border);background:#fff;border-radius:14px;font-size:1.5rem;
+  font-weight:900;color:var(--primary);display:grid;place-items:center;transition:.2s
+}
+.letter:hover{background:var(--primary);color:#fff;transform:scale(1.04)}
+.canvas-wrap{background:#fff;border:1px solid var(--border);border-radius:17px;padding:10px}
+canvas{display:block;width:100%;height:300px;border-radius:12px;background:#f8fbfb;touch-action:none}
+.cycle-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cycle-item{padding:15px;border-radius:15px;background:var(--surface-2);border:1px solid var(--border)}
+.emergency{
+  background:linear-gradient(135deg,#7d1616,#c62828);color:#fff;border-radius:26px;padding:30px;
+  box-shadow:0 18px 50px rgba(198,40,40,.22)
+}
+.emergency p{opacity:.88}.emergency-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.footer{background:#092f2d;color:#dcebea;padding:55px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
+.footer h3,.footer h4{color:#fff;margin-bottom:12px}.footer a{display:block;color:#b8d1cf;margin:7px 0;font-size:.88rem}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:20px;font-size:.8rem;color:#9bb8b5}
+.modal{display:none;position:fixed;inset:0;background:rgba(4,20,20,.62);z-index:2000;padding:20px;place-items:center}
+.modal.show{display:grid}.modal-box{width:min(600px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:25px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.close{border:0;background:#edf3f2;border-radius:10px;width:38px;height:38px}
+.toast{
+  position:fixed;right:20px;bottom:20px;background:#103b39;color:#fff;padding:13px 17px;border-radius:12px;
+  box-shadow:var(--shadow);transform:translateY(130px);opacity:0;transition:.25s;z-index:3000
+}
+.toast.show{transform:translateY(0);opacity:1}
+.mobile-drawer{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1500
+}
+.mobile-drawer .drawer{
+  width:min(320px,88%);height:100%;background:#fff;padding:25px;overflow:auto
+}
+.mobile-drawer a{display:block;padding:13px;border-bottom:1px solid var(--border);font-weight:800}
+@media(max-width:1050px){
+  .nav-links{display:none}.menu-btn{display:grid}
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .departments{grid-template-columns:repeat(2,1fr)}
+  .values{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+  .topbar .container{justify-content:center;text-align:center}
+  .nav-inner{height:66px}.brand span{font-size:.9rem}
+  .hero{padding:55px 0}.hero h1{font-size:2.6rem}
+  .section{padding:55px 0}.section-head,.portal-head{align-items:flex-start;flex-direction:column}
+  .departments,.grid-2,.grid-3{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .cycle-summary{grid-template-columns:repeat(2,1fr)}
+  .values{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}
+  .alphabet{grid-template-columns:repeat(5,1fr)}
+  .hero-card{padding:16px}.hero-orb{height:270px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+body.dark{
+  --bg:#071c1b;--surface:#0d2927;--surface-2:#123533;--text:#e7f3f1;--muted:#a8c0bd;
+  --border:#24504d;--shadow:0 16px 45px rgba(0,0,0,.25);--shadow-sm:0 8px 24px rgba(0,0,0,.2)
+}
+body.dark .nav{background:rgba(7,28,27,.94)}
+body.dark input,body.dark select,body.dark textarea,body.dark table,body.dark .letter,body.dark .course{background:#0d2927;color:var(--text)}
+body.dark .btn-secondary,body.dark .icon-btn,body.dark .modal-box{background:#0d2927;color:var(--text)}
+body.dark .hero{background:linear-gradient(135deg,#092522,#071c1b)}
+</style>
+</head>
+
+<body>
+<div class="topbar">
+  <div class="container">
+    <span>📍 Afaukwu Autonomous Community · Ikwuano LGA · Abia State</span>
+    <span>☎ 07053477686 · 09037277433 · Clinic & Maternity: 24/7</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#hub" class="brand">
+      <div class="logo">M</div>
+      <div>MACOKI <small>Digital Ecosystem</small></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#hub">Hub</a>
+      <a href="#about">About</a>
+      <button onclick="openPortal('healthcare')">Healthcare</button>
+      <button onclick="openPortal('learning')">Learning</button>
+      <button onclick="openPortal('inventory')">Inventory</button>
+      <button onclick="openPortal('nursery')">Nursery</button>
+      <button onclick="openPortal('women')">Women's Health</button>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Toggle dark mode" onclick="toggleTheme()">🌙</button>
+      <button class="icon-btn menu-btn" aria-label="Open menu" onclick="toggleDrawer()">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="drawer" onclick="if(event.target===this)toggleDrawer()">
+  <div class="drawer">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <b>MACOKI MENU</b><button class="close" onclick="toggleDrawer()">✕</button>
+    </div>
+    <a href="#hub" onclick="toggleDrawer()">🏠 Master Hub</a>
+    <a href="#about" onclick="toggleDrawer()">ℹ️ About</a>
+    <a href="#departments" onclick="toggleDrawer()">🧩 Departments</a>
+    <a href="#emergency" onclick="toggleDrawer()">🚨 Emergency Help</a>
+    <a href="javascript:openPortal('healthcare');toggleDrawer()">🩺 Healthcare</a>
+    <a href="javascript:openPortal('learning');toggleDrawer()">📚 Learning</a>
+    <a href="javascript:openPortal('inventory');toggleDrawer()">💊 Inventory</a>
+    <a href="javascript:openPortal('nursery');toggleDrawer()">🧸 Nursery</a>
+    <a href="javascript:openPortal('women');toggleDrawer()">🌸 Women's Health</a>
+  </div>
+</div>
+
+<main id="hub">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">● CONNECTED COMMUNITY PLATFORM</span>
+      <h1>Everything you need, <span>connected in one trusted place.</span></h1>
+      <p>
+        The MACOKI Master Hub connects healthcare, education, hospital and pharmacy
+        inventory, early-years learning, women's health and emergency access in one
+        modern digital ecosystem.
+      </p>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="openPortal('healthcare')">🩺 Enter Healthcare Portal</button>
+        <a class="btn btn-secondary" href="#about">Read our story →</a>
+        <a class="btn btn-danger" href="#emergency">🚨 Emergency Help</a>
+      </div>
+      <div class="card" style="padding:15px;display:flex;gap:20px;flex-wrap:wrap">
+        <b>24/7 Clinic & Maternity</b><span class="muted">School services: Mon–Fri, 8am–2pm</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-orb">
+        <div class="cross">+</div>
+        <h2>MACOKI MASTER HUB</h2>
+        <p style="color:#d8efed;margin-top:7px">Healthcare · Education · Community · Digital Services</p>
+        <div class="status-grid">
+          <div class="status"><strong>7</strong><span>Connected departments</span></div>
+          <div class="status"><strong>1</strong><span>Central hub</span></div>
+          <div class="status"><strong>24/7</strong><span>Emergency access</span></div>
+          <div class="status"><strong>∞</strong><span>Ready to scale</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+  <div class="section-head">
+    <div><span class="eyebrow">ABOUT MACOKI</span><h2>One connected home for essential services.</h2></div>
+    <p>A digital platform created to bring healthcare, education, patient services, professional services, school learning, pharmacy and inventory management, and maternal & reproductive health information together.</p>
+  </div>
+  <div class="about-grid">
+    <article class="card">
+      <h3>MACOKI Clinic and Maternity Home</h3>
+      <p class="muted">MACOKI Clinic and Maternity Home is the healthcare foundation of this ecosystem, designed around accessible, compassionate, preventive, maternal, child, community and general healthcare while using appropriate digital systems to improve communication, coordination and continuity of care.</p>
+    </article>
+    <article class="card">
+      <h3>Our Vision & Mission</h3>
+      <p><b>Vision:</b> To build a trusted, accessible and technology-enabled healthcare and education ecosystem that improves quality, accessibility, efficiency and continuity of essential services.</p>
+      <p style="margin-top:10px"><b>Mission:</b> To provide compassionate, accessible and responsible healthcare and educational services while using appropriate technology to connect people with information, professionals and services.</p>
+    </article>
+  </div>
+  <div class="values">
+    <div class="value">❤️<b>Compassion</b><span class="muted">Dignity, empathy and respect.</span></div>
+    <div class="value">✓<b>Integrity</b><span class="muted">Honesty, transparency and accountability.</span></div>
+    <div class="value">♿<b>Accessibility</b><span class="muted">Useful services and information, easier to reach.</span></div>
+    <div class="value">🔒<b>Privacy</b><span class="muted">Personal and health information handled with care.</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="departments" style="background:#eaf4f3">
+<div class="container">
+<div class="section-head"><div><span class="eyebrow">MASTER HUB</span><h2>Connected departments.</h2></div><p>Select a department to open its dedicated workspace.</p></div>
+<div class="departments">
+  <article class="card dept"><div class="dept-icon">🩺</div><h3>Healthcare Portal</h3><p>Client accounts, professional directory, appointments, ANC/surgical requests, lab bookings, prescriptions, complaints and emergency access.</p><ul><li>Register & log in</li><li>Book appointments</li><li>Ask MACOKI health Q&A</li></ul><button class="btn btn-primary" onclick="openPortal('healthcare')">Open Portal →</button></article>
+  <article class="card dept"><div class="dept-icon">📚</div><h3>Learning & Education</h3><p>Student registration, course centre, CBT practice engine and digital library.</p><ul><li>Practice CBT</li><li>Track performance</li><li>Browse resources</li></ul><button class="btn btn-primary" onclick="openPortal('learning')">Open Portal →</button></article>
+  <article class="card dept"><div class="dept-icon">💊</div><h3>Hospital & Pharmacy Inventory</h3><p>Staff-only inventory with batches, manufacture and expiry dates, stock movement and dispensing records.</p><ul><li>Track expiry</li><li>Log movement</li><li>Record dispensing</li></ul><button class="btn btn-primary" onclick="openPortal('inventory')">Open Portal →</button></article>
+  <article class="card dept"><div class="dept-icon">🧸</div><h3>Nursery & Children's Learning</h3><p>A–Z learning, sound, writing practice, nursery subjects and supervised learning assistance.</p><ul><li>Hear letters</li><li>Writing pad</li><li>Learning Buddy</li></ul><button class="btn btn-primary" onclick="openPortal('nursery')">Open Portal →</button></article>
+  <article class="card dept"><div class="dept-icon">🌸</div><h3>Women's & Maternal Health</h3><p>Cycle tracking, personal calendar and maternal & reproductive health information.</p><ul><li>Track cycle</li><li>View fertile window</li><li>Read FAQs</li></ul><button class="btn btn-primary" onclick="openPortal('women')">Open Portal →</button></article>
+  <article class="card dept"><div class="dept-icon">🚨</div><h3>Emergency Help</h3><p>Immediate access to MACOKI emergency lines and location sharing.</p><ul><li>Call emergency lines</li><li>Share location</li><li>View clinic information</li></ul><a class="btn btn-danger" href="#emergency">Get Help Now →</a></article>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="section-head"><div><span class="eyebrow">LEADERSHIP</span><h2>The people behind MACOKI.</h2></div></div>
+<div class="grid-2">
+<article class="card"><div class="dept-icon">ACO</div><h3>Mrs. Amarachukwu Comfort Okeanya</h3><b>Chief Executive Officer</b><p class="muted" style="margin-top:10px">Provides leadership and strategic direction for MACOKI Clinic and Maternity Home, championing compassionate service, professionalism, accountability and community wellbeing.</p></article>
+<article class="card"><div class="dept-icon">OKM</div><h3>Mr. Okeanya Kingsley Madukaibeya</h3><b>Chairman</b><p class="muted" style="margin-top:10px">Chairman of MACOKI, supporting the long-term strategic development and integration of healthcare, education and technology into one connected ecosystem.</p></article>
+</div>
+</div>
+</section>
+
+<section class="section" id="emergency">
+<div class="container">
+<div class="emergency">
+  <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.2)">🚨 EMERGENCY HELP</span>
+  <h2 style="font-size:2rem;margin:12px 0">Some moments cannot wait for a menu.</h2>
+  <p>This digital platform is not a substitute for immediate emergency medical care. If this is life-threatening, call now.</p>
+  <div class="emergency-actions">
+    <a class="btn" style="background:#fff;color:#8c1d1d" href="tel:07053477686">📞 07053477686</a>
+    <a class="btn" style="background:#fff;color:#8c1d1d" href="tel:09037277433">📞 09037277433</a>
+    <button class="btn btn-gold" onclick="shareLocation()">📍 Share My Location</button>
+  </div>
+  <p style="margin-top:20px">MACOKI Clinic and Maternity Home · Afaukwu Autonomous Community, Ikwuano LGA, Abia State, Nigeria</p>
+</div>
+</div>
+</section>
+</main>
+
+<!-- HEALTHCARE -->
+<section class="portal" id="healthcare">
+<div class="container">
+<div class="portal-head"><div class="portal-title"><div class="dept-icon">🩺</div><div><span class="eyebrow">HEALTHCARE</span><h2>MACOKI Healthcare Portal</h2></div></div><button class="btn btn-secondary" onclick="goHub()">← Back to Hub</button></div>
+<div class="notice">Booking requests are coordination requests only. A qualified clinician must review requests and determine what is medically appropriate. This is not automatic authorization.</div>
+<div class="grid-2">
+<article class="card"><h3>Create patient/client account</h3><form onsubmit="demoSubmit(event,'Registration saved successfully.')"><div class="form-grid">
+<div class="field"><label>Full name</label><input required></div><div class="field"><label>Date of birth</label><input type="date" required></div>
+<div class="field"><label>Sex</label><select><option>Select</option><option>Female</option><option>Male</option></select></div><div class="field"><label>Phone</label><input placeholder="0803..."></div>
+<div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Password</label><input type="password" required></div>
+<div class="field full"><label>Known allergies (optional)</label><input placeholder="e.g. Penicillin"></div></div><button class="btn btn-primary">Register</button></form></article>
+<article class="card"><h3>Already registered? Log in</h3><form onsubmit="demoSubmit(event,'Demo login successful.')"><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="btn btn-primary">Log in</button></form><p class="muted" style="margin-top:12px">Demo account: demo@macoki.com / demo1234</p></article>
+</div>
+<div class="section-head" style="margin-top:35px"><div><h3>Find a healthcare professional</h3></div></div>
+<div class="card">
+<div class="search"><input placeholder="Search by name or keyword…"><select><option>All services</option><option>General consultation</option><option>Maternal health</option><option>Laboratory</option></select><button class="btn btn-primary">Search</button></div>
+<div class="grid-3"><div class="course"><b>General Healthcare Service</b><span>Patient care & coordination</span></div><div class="course"><b>Maternal & Child Health</b><span>Maternal and child services</span></div><div class="course"><b>Laboratory Services</b><span>Test booking & coordination</span></div></div>
+</div>
+<div class="grid-2" style="margin-top:18px">
+<article class="card"><h3>Book an appointment</h3><form onsubmit="demoSubmit(event,'Appointment request submitted.')"><div class="form-grid"><div class="field"><label>Service</label><select><option>General consultation</option><option>Maternal health</option><option>Laboratory</option></select></div><div class="field"><label>Preferred provider</label><select><option>Select provider</option></select></div><div class="field"><label>Date</label><input type="date"></div><div class="field"><label>Time</label><input type="time"></div><div class="field full"><label>Notes</label><textarea></textarea></div></div><button class="btn btn-primary">Request appointment</button></form></article>
+<article class="card"><h3>Request maternity / surgical service</h3><form onsubmit="demoSubmit(event,'Service request submitted.')"><div class="field"><label>Service type</label><select><option>Select</option><option>ANC</option><option>Maternity service</option><option>Surgical consultation</option></select></div><div class="field"><label>Estimated / preferred date</label><input type="date"></div><div class="field"><label>Additional details</label><textarea></textarea></div><button class="btn btn-primary">Submit request</button></form></article>
+</div>
+<div class="grid-2" style="margin-top:18px">
+<article class="card"><h3>Book a laboratory test</h3><form onsubmit="demoSubmit(event,'Laboratory booking submitted.')"><div class="field"><label>Test</label><select><option>Select test</option><option>General laboratory test</option></select></div><div class="field"><label>Preferred date</label><input type="date"></div><button class="btn btn-primary">Book test</button></form></article>
+<article class="card"><h3>Ask MACOKI</h3><p class="muted">General educational information only — not a diagnosis.</p><div class="search" style="margin-top:12px"><input placeholder="e.g. What causes fever in pregnancy?"><button class="btn btn-primary">Ask</button></div><div class="notice">If symptoms concern you, use Emergency Help or book an appointment.</div></article>
+</div>
+<div class="card" style="margin-top:18px"><h3>Submit a complaint or feedback</h3><form onsubmit="demoSubmit(event,'Feedback submitted.')"><div class="form-grid"><div class="field"><label>Category</label><select><option>Complaint</option><option>Feedback</option><option>Service issue</option></select></div><div class="field"><label>Reference</label><input></div><div class="field full"><label>Details</label><textarea required></textarea></div></div><button class="btn btn-primary">Submit</button></form></div>
+</div>
+</section>
+
+<!-- LEARNING -->
+<section class="portal" id="learning">
+<div class="container">
+<div class="portal-head"><div class="portal-title"><div class="dept-icon">📚</div><div><span class="eyebrow">EDUCATION</span><h2>MACOKI Learning & Education Portal</h2></div></div><button class="btn btn-secondary" onclick="goHub()">← Back to Hub</button></div>
+<div class="grid-2">
+<article class="card"><h3>Student registration</h3><form onsubmit="demoSubmit(event,'Student registration saved.')"><div class="form-grid"><div class="field"><label>Full name</label><input required></div><div class="field"><label>Institution</label><input placeholder="e.g. National Open University of Nigeria"></div><div class="field"><label>Programme</label><input placeholder="e.g. B.Sc. Public Health"></div><div class="field"><label>Level</label><input placeholder="e.g. 400L"></div><div class="field"><label>Email</label><input type="email"></div><div class="field"><label>Password</label><input type="password"></div></div><button class="btn btn-primary">Register</button></form></article>
+<article class="card"><h3>Student login</h3><form onsubmit="demoSubmit(event,'Student login successful.')"><div class="field"><label>Email</label><input type="email"></div><div class="field"><label>Password</label><input type="password"></div><button class="btn btn-primary">Log in</button></form><p class="muted" style="margin-top:12px">Demo account: student@macoki.com / learn1234</p></article>
+</div>
+<div class="kpis" style="margin-top:20px"><div class="kpi"><div class="num">0</div><small>CBT attempts</small></div><div class="kpi"><div class="num">0%</div><small>Best score</small></div><div class="kpi"><div class="num">0%</div><small>Average score</small></div><div class="kpi"><div class="num">0</div><small>Subjects practiced</small></div></div>
+<div class="grid-2">
+<article class="card"><h3>University Course Centre</h3><p class="muted">Materials organized by university, faculty, programme, course and topic.</p><div class="course-list" style="margin-top:14px">
+<div class="course"><b>B.Sc. Public Health</b><span>Epidemiology · Environmental Health · Community Health · Health Promotion · Health Policy & Management · HMIS · Occupational Health · Maternal & Child Health</span></div>
+<div class="course"><b>Cybersecurity Fundamentals</b><span>Information Security · Network Fundamentals · Threats & Vulnerabilities · SOC · Risk Management · Ethics & Compliance</span></div>
+</div></article>
+<article class="card"><h3>CBT Practice</h3><div class="field"><label>Subject</label><select><option>Select subject</option><option>Public Health</option><option>Epidemiology</option><option>Environmental Health</option><option>Cybersecurity Fundamentals</option></select></div><div class="field"><label>Time allowed</label><select><option>10 minutes</option><option>20 minutes</option><option>30 minutes</option></select></div><button class="btn btn-primary" onclick="demoToast('CBT practice interface ready.')">Start practice test →</button><div class="notice">The demonstration architecture can scale to a 100-question bank per subject.</div></article>
+</div>
+<div class="card" style="margin-top:18px"><h3>Digital Library</h3><div class="search"><input placeholder="Search resources…"><button class="btn btn-primary">Search</button></div><p class="muted">MACOKI does not host pirated textbooks. Where copyrighted works cannot legally be reproduced, provide publisher or licensed-access routes.</p></div>
+</div>
+</section>
+
+<!-- INVENTORY -->
+<section class="portal" id="inventory">
+<div class="container">
+<div class="portal-head"><div class="portal-title"><div class="dept-icon">💊</div><div><span class="eyebrow">STAFF SYSTEM</span><h2>Hospital, Pharmacy & Inventory</h2></div></div><button class="btn btn-secondary" onclick="goHub()">← Back to Hub</button></div>
+<div class="notice">Authorized staff only. This frontend demonstration is not a production security boundary.</div>
+<div class="card"><h3>Staff sign-in</h3><form onsubmit="demoSubmit(event,'Inventory demo access granted.')"><div class="search"><input type="password" placeholder="Enter demo staff passcode"><button class="btn btn-primary">Enter inventory system</button></div></form><p class="muted">Demo passcode: MACOKI-STAFF</p></div>
+<div class="kpis" style="margin-top:20px"><div class="kpi"><div class="num">0</div><small>Total items tracked</small></div><div class="kpi"><div class="num">0 🔴</div><small>Expired</small></div><div class="kpi"><div class="num">0 🟠</div><small>Expiring ≤ 90 days</small></div><div class="kpi"><div class="num">0 🟢</div><small>Valid stock</small></div></div>
+<div class="card"><div class="section-head"><h3>Drug inventory</h3><button class="btn btn-primary" onclick="showModal('drugModal')">+ Add drug</button></div><div class="table-wrap"><table><thead><tr><th>Generic name</th><th>Form</th><th>Qty</th><th>Batch</th><th>Mfg date</th><th>Expiry</th><th>Status</th></tr></thead><tbody><tr><td colspan="7" class="muted">No inventory items yet.</td></tr></tbody></table></div></div>
+<div class="card" style="margin-top:18px"><div class="section-head"><h3>Stock movement log</h3><button class="btn btn-primary" onclick="showModal('movementModal')">+ Log movement</button></div><div class="table-wrap"><table><thead><tr><th>Item</th><th>Type</th><th>Qty</th><th>Staff</th><th>Date/Time</th><th>Ref</th></tr></thead><tbody><tr><td colspan="6" class="muted">No stock movements recorded.</td></tr></tbody></table></div></div>
+<div class="card" style="margin-top:18px"><h3>Dispensing record</h3><form onsubmit="demoSubmit(event,'Dispensing record saved.')"><div class="form-grid"><div class="field"><label>Patient / client ID or name</label><input></div><div class="field"><label>Prescription number</label><input placeholder="RX-0001"></div><div class="field"><label>Medicine</label><input></div><div class="field"><label>Quantity</label><input type="number"></div><div class="field"><label>Dispensing staff name</label><input></div></div><button class="btn btn-primary">Record dispensing</button></form></div>
+</div>
+</section>
+
+<!-- NURSERY -->
+<section class="portal" id="nursery">
+<div class="container">
+<div class="portal-head"><div class="portal-title"><div class="dept-icon">🧸</div><div><span class="eyebrow">EARLY YEARS</span><h2>Nursery & Children's Learning</h2></div></div><button class="btn btn-secondary" onclick="goHub()">← Back to Hub</button></div>
+<div class="notice">A grown-up should supervise children while using this learning area.</div>
+<div class="card"><h3>ABC Learning Centre</h3><p class="muted">Tap any letter to hear it spoken aloud.</p><div class="alphabet" style="margin-top:18px">
+<script>
+for(let i=0;i<26;i++){document.write(`<button class="letter" onclick="speakLetter('${String.fromCharCode(65+i)}')">${String.fromCharCode(65+i)}</button>`)}
+</script>
+</div></div>
+<div class="grid-2" style="margin-top:18px">
+<div class="card"><h3>Writing Practice</h3><p class="muted">Draw with your finger or mouse. Try lines, shapes, letters and numbers.</p><div class="canvas-wrap" style="margin-top:15px"><canvas id="writeCanvas"></canvas></div><button class="btn btn-secondary" style="margin-top:10px" onclick="clearCanvas()">Clear pad</button></div>
+<div class="card"><h3>Learning Buddy</h3><p class="muted">A supervised child-friendly assistant for letters, numbers, simple words and gentle stories.</p><div class="field" style="margin-top:15px"><label>Ask about a letter, number or story</label><input id="buddyInput" placeholder="e.g. Tell me about letter A"></div><button class="btn btn-primary" onclick="buddy()">Ask Learning Buddy</button><div id="buddyOutput" class="notice" style="margin-top:14px">Your learning response will appear here.</div></div>
+</div>
+</div>
+</section>
+
+<!-- WOMEN -->
+<section class="portal" id="women">
+<div class="container">
+<div class="portal-head"><div class="portal-title"><div class="dept-icon">🌸</div><div><span class="eyebrow">WOMEN'S HEALTH</span><h2>Women's & Maternal Health Portal</h2></div></div><button class="btn btn-secondary" onclick="goHub()">← Back to Hub</button></div>
+<div class="grid-2">
+<div class="card"><h3>Register / Log in</h3><form onsubmit="demoSubmit(event,'Women’s health account saved.')"><div class="field"><label>Full name</label><input></div><div class="field"><label>Date of birth</label><input type="date"></div><div class="field"><label>Email</label><input type="email"></div><div class="field"><label>Password</label><input type="password"></div><button class="btn btn-primary">Register</button></form><p class="muted" style="margin-top:12px">Demo account: woman@macoki.com / cycle1234</p></div>
+<div class="card"><h3>Cycle Tracker</h3><form onsubmit="calculateCycle(event)"><div class="field"><label>First day of last period</label><input id="lmp" type="date" required></div><div class="field"><label>Average cycle length (days)</label><input id="cycle" type="number" value="28" min="1" required></div><div class="field"><label>Average period length (days)</label><input id="period" type="number" value="5" min="1" required></div><button class="btn btn-primary">Update & Calculate</button></form></div>
+</div>
+<div id="cycleResults" class="card" style="margin-top:18px"><h3>This month</h3><div class="cycle-summary" style="margin-top:15px"><div class="cycle-item"><b>Period</b><span class="muted">Not calculated</span></div><div class="cycle-item"><b>Fertile window</b><span class="muted">Not calculated</span></div><div class="cycle-item"><b>Ovulation</b><span class="muted">Not calculated</span></div><div class="cycle-item"><b>Next period</b><span class="muted">Not calculated</span></div></div></div>
+<div class="card" style="margin-top:18px"><h3>Maternal & reproductive health FAQs</h3><div class="faq-list" style="margin-top:14px"><div class="course"><b>Why should I seek professional care when symptoms concern me?</b><span>Digital information and cycle estimates cannot replace clinical assessment.</span></div><div class="course"><b>Are cycle predictions exact?</b><span>No. Calendar-based predictions are estimates and can vary between cycles.</span></div><div class="course"><b>When should emergency help be used?</b><span>Use emergency services for urgent or life-threatening situations.</span></div></div></div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div><h3>MACOKI Digital Ecosystem</h3><p>Healthcare, education, inventory, early-years learning and women's health — one connected hub, built for our community.</p></div>
+<div><h4>Departments</h4><a href="#hub">Master Hub</a><a href="javascript:openPortal('healthcare')">Healthcare</a><a href="javascript:openPortal('learning')">Learning</a><a href="javascript:openPortal('inventory')">Inventory</a><a href="javascript:openPortal('nursery')">Nursery</a><a href="javascript:openPortal('women')">Women's Health</a></div>
+<div><h4>Contact</h4><a href="tel:07053477686">07053477686</a><a href="tel:09037277433">09037277433</a><p>Afaukwu Autonomous Community,<br>Ikwuano LGA, Abia State, Nigeria</p></div>
+<div><h4>Hours</h4><p>Clinic & Maternity: 24/7</p><p>School services: Mon–Fri, 8:00am–2:00pm</p></div>
+</div>
+<div class="footer-bottom">© 2026 MACOKI Clinic and Maternity Home. All rights reserved. Frontend demonstration.</div>
+</div>
+</footer>
+
+<div class="modal" id="drugModal"><div class="modal-box"><div class="modal-head"><h3>Add drug to inventory</h3><button class="close" onclick="hideModal('drugModal')">✕</button></div><form onsubmit="demoSubmit(event,'Drug added to the demonstration inventory.');hideModal('drugModal')"><div class="form-grid"><div class="field"><label>Generic name</label><input required></div><div class="field"><label>Brand name</label><input></div><div class="field"><label>Dosage form</label><select><option>Tablet</option><option>Capsule</option><option>Syrup</option><option>Injection</option></select></div><div class="field"><label>Quantity received</label><input type="number"></div><div class="field"><label>Batch number</label><input></div><div class="field"><label>Manufacture date</label><input type="date"></div><div class="field"><label>Expiry date</label><input type="date"></div><div class="field"><label>Supplier</label><input></div></div><button class="btn btn-primary">Add to inventory</button></form></div></div>
+
+<div class="modal" id="movementModal"><div class="modal-box"><div class="modal-head"><h3>Log stock movement</h3><button class="close" onclick="hideModal('movementModal')">✕</button></div><form onsubmit="demoSubmit(event,'Stock movement logged.');hideModal('movementModal')"><div class="field"><label>Item</label><input></div><div class="field"><label>Transaction type</label><select><option>Received</option><option>Dispensed</option><option>Adjustment</option><option>Expired</option></select></div><div class="field"><label>Quantity</label><input type="number"></div><div class="field"><label>Staff member</label><input></div><div class="field"><label>Reason / reference</label><input></div><button class="btn btn-primary">Log movement</button></form></div></div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+function openPortal(id){
+  document.querySelectorAll('.portal').forEach(p=>p.classList.remove('active'));
+  document.getElementById('hub').style.display='none';
+  document.getElementById('about').style.display='none';
+  document.getElementById('departments').style.display='none';
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goHub(){
+  document.querySelectorAll('.portal').forEach(p=>p.classList.remove('active'));
+  document.getElementById('hub').style.display='block';
+  document.getElementById('about').style.display='';
+  document.getElementById('departments').style.display='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleDrawer(){document.getElementById('drawer').style.display=document.getElementById('drawer').style.display==='block'?'none':'block'}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('macoki-theme',document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('macoki-theme')==='dark')document.body.classList.add('dark');
+function demoToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+function demoSubmit(e,msg){e.preventDefault();demoToast(msg);e.target.reset()}
+function showModal(id){document.getElementById(id).classList.add('show')}
+function hideModal(id){document.getElementById(id).classList.remove('show')}
+function shareLocation(){
+  if(!navigator.geolocation){demoToast('Location sharing is not supported by this browser.');return}
+  navigator.geolocation.getCurrentPosition(
+    p=>demoToast(`Location available: ${p.coords.latitude.toFixed(4)}, ${p.coords.longitude.toFixed(4)}`),
+    ()=>demoToast('Location permission was not granted.')
+  );
+}
+function speakLetter(letter){
+  if('speechSynthesis' in window){
+    const u=new SpeechSynthesisUtterance(letter);u.rate=.75;window.speechSynthesis.speak(u);
+  }else demoToast('Speech is not supported by this browser.');
+}
+let canvas,ctx,drawing=false;
+function initCanvas(){
+  canvas=document.getElementById('writeCanvas');if(!canvas)return;
+  const ratio=window.devicePixelRatio||1;const rect=canvas.getBoundingClientRect();
+  canvas.width=rect.width*ratio;canvas.height=rect.height*ratio;ctx=canvas.getContext('2d');ctx.scale(ratio,ratio);
+  ctx.lineWidth=4;ctx.lineCap='round';ctx.strokeStyle='#0b7a75';
+  const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.touches?e.touches[0].clientX:e.clientX)-r.left,y:(e.touches?e.touches[0].clientY:e.clientY)-r.top}};
+  const start=e=>{drawing=true;const p=point(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault()};
+  const move=e=>{if(!drawing)return;const p=point(e);ctx.lineTo(p.x,p.y);ctx.stroke();e.preventDefault()};
+  const end=()=>drawing=false;
+  canvas.addEventListener('mousedown',start);canvas.addEventListener('mousemove',move);canvas.addEventListener('mouseup',end);
+  canvas.addEventListener('mouseleave',end);canvas.addEventListener('touchstart',start,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});canvas.addEventListener('touchend',end);
+}
+function clearCanvas(){if(ctx){ctx.clearRect(0,0,canvas.width,canvas.height);demoToast('Writing pad cleared.')} }
+function buddy(){
+  const q=document.getElementById('buddyInput').value.trim();const out=document.getElementById('buddyOutput');
+  if(!q){out.textContent='Please enter a simple learning question.';return}
+  out.textContent='Learning Buddy: Great question! Let us learn together. Remember to ask a grown-up for help when needed.';
+}
+function calculateCycle(e){
+  e.preventDefault();
+  const lmp=new Date(document.getElementById('lmp').value+'T00:00:00');
+  const cycle=Number(document.getElementById('cycle').value),period=Number(document.getElementById('period').value);
+  if(isNaN(lmp.getTime())||cycle<1||period<1)return;
+  const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x};
+  const fmt=d=>d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});
+  const next=add(lmp,cycle), ov=add(lmp,cycle-14), fertileStart=add(ov,-5),fertileEnd=add(ov,1),periodEnd=add(lmp,period-1);
+  document.getElementById('cycleResults').innerHTML=`<h3>Cycle estimate</h3>
+  <div class="cycle-summary" style="margin-top:15px">
+  <div class="cycle-item"><b>Period</b><span class="muted">${fmt(lmp)} – ${fmt(periodEnd)}</span></div>
+  <div class="cycle-item"><b>Fertile window</b><span class="muted">${fmt(fertileStart)} – ${fmt(fertileEnd)}</span></div>
+  <div class="cycle-item"><b>Ovulation estimate</b><span class="muted">${fmt(ov)}</span></div>
+  <div class="cycle-item"><b>Next period estimate</b><span class="muted">${fmt(next)}</span></div></div>
+  <div class="notice">These are calendar-based estimates and can vary. They are not a diagnosis or guaranteed prediction.</div>`;
+}
+window.addEventListener('load',initCanvas);
+window.addEventListener('resize',()=>{if(document.getElementById('nursery').classList.contains('active'))initCanvas()});
+</script>
+</body>
+</html>
